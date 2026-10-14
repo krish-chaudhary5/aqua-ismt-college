@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aqua — Security awareness training, built for ISMT College | AquaTech Solutions</title>
+<meta name="description" content="Aqua is a cyber security awareness and phishing-simulation platform built by AquaTech Solutions for ISMT College, as part of the CET257 Enterprise Project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1F3864;
+    --navy-ink:#152648;
+    --blue:#5B9BD5;
+    --lightblue:#E7F1FB;
+    --amber:#FFC000;
+    --green:#4F8F52;
+    --paper:#FBFAF7;
+    --paper-dim:#F1EFE9;
+    --line:#DCD8CC;
+    --text:#1C2230;
+    --muted:#5C6378;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--text);
+    font-family:'Inter',-apple-system,"Segoe UI",sans-serif;
+    font-size:16px;
+    line-height:1.5;
+  }
+  a{color:inherit;}
+  .serif{font-family:'Fraunces',Georgia,serif;}
+  .mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  /* ---------- Header / masthead ---------- */
+  header{border-bottom:1px solid var(--line);background:var(--paper);}
+  .masthead{display:flex;align-items:center;justify-content:space-between;padding:20px 0;max-width:1120px;margin:0 auto;padding-left:32px;padding-right:32px;}
+  @media(max-width:640px){.masthead{padding-left:20px;padding-right:20px;flex-wrap:wrap;gap:14px;}}
+  .brand{display:flex;align-items:center;gap:11px;}
+  .brand .wordmark{font-weight:600;font-size:19px;letter-spacing:0.01em;color:var(--navy-ink);}
+  .brand .tagline{font-size:12px;color:var(--muted);display:block;margin-top:1px;}
+  .navlinks{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:500;}
+  .navlinks a{text-decoration:none;border-bottom:1px solid transparent;padding-bottom:3px;transition:border-color .15s ease;}
+  .navlinks a:hover{border-bottom-color:var(--navy);}
+  .navlinks .cta{background:var(--navy-ink);color:#fff;padding:9px 16px;border-radius:3px;font-weight:600;}
+  .navlinks .cta:hover{border-bottom-color:transparent;background:var(--navy);}
+  @media(max-width:760px){.navlinks a:not(.cta){display:none;}}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:68px 0 64px;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:40px;}}
+  .hero h1{font-size:clamp(32px,4.2vw,46px);font-weight:500;line-height:1.14;margin:0 0 20px;color:var(--navy-ink);letter-spacing:-0.01em;}
+  .hero-lede{font-size:17px;color:var(--muted);max-width:46ch;margin:0 0 30px;}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:38px;}
+  .btn-solid{background:var(--navy-ink);color:#fff;padding:13px 22px;border-radius:3px;font-weight:600;font-size:14.5px;text-decoration:none;border:1px solid var(--navy-ink);}
+  .btn-solid:hover{background:var(--navy);}
+  .btn-line{background:transparent;color:var(--navy-ink);padding:13px 22px;border-radius:3px;font-weight:600;font-size:14.5px;text-decoration:none;border:1px solid var(--line);}
+  .btn-line:hover{border-color:var(--navy-ink);}
+  .stat-row{display:flex;gap:34px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:22px;}
+  .stat-row div{display:flex;flex-direction:column;gap:3px;}
+  .stat-row .num{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:20px;color:var(--navy-ink);}
+  .stat-row .lbl{font-size:12.5px;color:var(--muted);}
+
+  /* ---------- Hero mock panel ---------- */
+  .mock{background:var(--navy-ink);border-radius:10px;padding:18px;box-shadow:0 20px 50px -18px rgba(21,38,72,0.45);}
+  .mock-bar{display:flex;align-items:center;justify-content:space-between;padding:2px 4px 14px;border-bottom:1px solid rgba(255,255,255,0.12);margin-bottom:14px;}
+  .mock-bar .mb-title{color:#fff;font-size:12.5px;font-weight:600;letter-spacing:0.02em;}
+  .mock-bar .mb-dot{width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block;margin-right:6px;}
+  .mock-card{background:#fff;border-radius:7px;padding:14px 15px;margin-bottom:10px;}
+  .mock-card.flag{border-left:3px solid var(--amber);}
+  .mock-card .mc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+  .mock-card .mc-from{font-size:13px;font-weight:600;color:var(--navy-ink);}
+  .mock-card .mc-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+  .mock-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#8A6500;background:#FFF1C2;padding:3px 7px;border-radius:3px;white-space:nowrap;}
+  .mock-score{background:rgba(255,255,255,0.06);border-radius:7px;padding:14px 15px;margin-top:12px;}
+  .mock-score .ms-top{display:flex;justify-content:space-between;color:#fff;font-size:12px;margin-bottom:8px;}
+  .mock-score .ms-top span:last-child{font-family:'IBM Plex Mono',monospace;color:var(--amber);font-weight:600;}
+  .ms-bar{height:6px;border-radius:4px;background:rgba(255,255,255,0.14);overflow:hidden;}
+  .ms-fill{height:100%;width:78%;background:linear-gradient(90deg,var(--blue),var(--amber));}
+
+  /* ---------- Section scaffolding ---------- */
+  section{padding:56px 0;}
+  .eyebrow-lbl{font-size:12.5px;color:var(--muted);font-weight:500;margin:0 0 10px;}
+  .section-head{max-width:640px;margin-bottom:38px;}
+  .section-head h2{font-size:clamp(23px,2.8vw,30px);font-weight:500;color:var(--navy-ink);margin:0 0 12px;letter-spacing:-0.01em;}
+  .section-head p{color:var(--muted);font-size:15.5px;margin:0;max-width:56ch;}
+  .rule{border:0;border-top:1px solid var(--line);margin:0;}
+
+  /* ---------- Mission ---------- */
+  .mission{background:var(--navy-ink);color:#fff;}
+  .mission-grid{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:start;}
+  @media(max-width:700px){.mission-grid{grid-template-columns:1fr;gap:18px;}}
+  .mission-grid .eyebrow-lbl{color:#9FB2D4;}
+  .mission p.statement{font-family:'Fraunces',Georgia,serif;font-size:clamp(20px,2.6vw,26px);font-weight:500;line-height:1.42;font-style:italic;color:#F2F5FB;margin:0;max-width:62ch;}
+  .mission .mission-sign{margin-top:22px;font-size:13px;color:#9FB2D4;}
+
+  /* ---------- Capabilities (asymmetric, not identical cards) ---------- */
+  .cap-layout{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);align-items:stretch;}
+  @media(max-width:760px){.cap-layout{flex-direction:column;}}
+  .cap-main{background:var(--paper);padding:34px;flex:1.3;display:flex;flex-direction:column;justify-content:center;}
+  .cap-col{flex:1;display:flex;flex-direction:column;gap:1px;background:var(--line);}
+  .cap-sub{background:var(--paper);padding:28px 34px;flex:1;display:flex;flex-direction:column;justify-content:center;}
+  .cap-glyph{width:30px;height:30px;margin-bottom:16px;}
+  .cap h3{font-size:18px;font-weight:600;color:var(--navy-ink);margin:0 0 9px;}
+  .cap-main h3{font-size:21px;}
+  .cap p{color:var(--muted);font-size:14.5px;line-height:1.6;margin:0;max-width:44ch;}
+
+  /* ---------- How it works ---------- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+  @media(max-width:760px){.steps{grid-template-columns:1fr 1fr;gap:28px 20px;}}
+  .step{padding:0 22px 0 0;border-left:1px solid var(--line);padding-left:20px;}
+  .step:first-child{border-left:none;padding-left:0;}
+  @media(max-width:760px){.step{border-left:none;padding-left:0;}}
+  .step .step-num{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--blue);font-weight:600;margin-bottom:10px;}
+  .step h4{margin:0 0 7px;font-size:15px;font-weight:600;color:var(--navy-ink);}
+  .step p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.55;}
+
+  /* ---------- Field note / testimonial ---------- */
+  .fieldnote{border-left:3px solid var(--amber);background:var(--paper-dim);padding:26px 30px;border-radius:0 6px 6px 0;}
+  .fieldnote p{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:18px;line-height:1.55;margin:0 0 14px;color:var(--navy-ink);}
+  .fieldnote cite{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted);}
+
+  /* ---------- Offer / services (advertising what AquaTech delivers) ---------- */
+  .offer-list{border-top:1px solid var(--line);}
+  .offer-row{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--line);}
+  @media(max-width:700px){.offer-row{grid-template-columns:1fr;gap:6px;}}
+  .offer-row .offer-name{font-weight:600;color:var(--navy-ink);font-size:15px;}
+  .offer-row p{margin:0;color:var(--muted);font-size:14.5px;max-width:58ch;}
+
+  /* ---------- Team roster ---------- */
+  .roster{border-top:1px solid var(--line);}
+  .roster-row{display:grid;grid-template-columns:1.1fr 1.1fr 1.4fr;gap:20px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline;}
+  @media(max-width:700px){.roster-row{grid-template-columns:1fr;gap:3px;padding:16px 0;}}
+  .roster-row .r-name{font-weight:600;color:var(--navy-ink);font-size:15px;}
+  .roster-row .r-role{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--blue);}
+  .roster-row .r-focus{font-size:13.5px;color:var(--muted);}
+  .roster-head{display:grid;grid-template-columns:1.1fr 1.1fr 1.4fr;gap:20px;padding-bottom:10px;font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;}
+  @media(max-width:700px){.roster-head{display:none;}}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  @media(max-width:760px){.contact-grid{grid-template-columns:1fr;gap:30px;}}
+  #contact-form input,#contact-form textarea{
+    width:100%;padding:12px 13px;border-radius:4px;border:1px solid var(--line);
+    background:#fff;color:var(--text);font-size:14.5px;margin-bottom:12px;font-family:inherit;
+  }
+  #contact-form input:focus,#contact-form textarea:focus{outline:2px solid var(--navy);outline-offset:1px;}
+  #contact-form label{font-size:12.5px;color:var(--muted);display:block;margin-bottom:5px;}
+  .contact-note{font-size:13px;color:var(--muted);margin-top:14px;}
+
+  footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:12.5px;}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="masthead">
+    <div class="brand">
+      <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="9" fill="#1F3864"/><path d="M20 8c5 6 8 10 8 14a8 8 0 1 1-16 0c0-4 3-8 8-14z" fill="#5B9BD5"/><path d="M14 22l4 4 8-8" stroke="white" stroke-width="2.3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>
+        <span class="wordmark">AQUA</span>
+        <span class="tagline">by AquaTech Solutions</span>
+      </div>
+    </div>
+    <nav class="navlinks">
+      <a href="#mission">Mission</a>
+      <a href="#platform">Platform</a>
+      <a href="#how">How it works</a>
+      <a href="#team">Team</a>
+      <a class="cta" href="#contact">Request a walkthrough</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 class="serif">Security training staff actually finish, not one they sit through once a year.</h1>
+      <p class="hero-lede">Aqua is a cyber security awareness and phishing-simulation platform, built by AquaTech Solutions for ISMT College — short modules, realistic simulated phishing, and one dashboard the college can point to as evidence.</p>
+      <div class="hero-actions">
+        <a class="btn-solid" href="#contact">Request a walkthrough</a>
+        <a class="btn-line" href="#platform">See the platform</a>
+      </div>
+      <div class="stat-row">
+        <div><span class="num">&lt;5 min</span><span class="lbl">per training module</span></div>
+        <div><span class="num">6</span><span class="lbl">simulated risk scenarios</span></div>
+        <div><span class="num">1</span><span class="lbl">dashboard, always current</span></div>
+      </div>
+    </div>
+    <div class="mock" role="img" aria-label="Preview of the Aqua inbox simulation and risk score dashboard">
+      <div class="mock-bar"><span class="mb-title"><span class="mb-dot"></span>Inbox Simulation — live</span><span class="mock-tag mono">SIMULATED</span></div>
+      <div class="mock-card flag">
+        <div class="mc-top">
+          <div><div class="mc-from">IT Support &lt;it-helpdesk@ismt-college-support.com&gt;</div><div class="mc-sub">Action required: verify your mailbox storage limit</div></div>
+        </div>
+      </div>
+      <div class="mock-card">
+        <div class="mc-top"><div><div class="mc-from">Library System</div><div class="mc-sub">Your monthly resource usage report is ready</div></div></div>
+      </div>
+      <div class="mock-score">
+        <div class="ms-top"><span>Organisation risk score</span><span>78 / 100</span></div>
+        <div class="ms-bar"><div class="ms-fill"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section class="mission" id="mission">
+  <div class="wrap mission-grid">
+    <p class="eyebrow-lbl">Our mission</p>
+    <div>
+      <p class="statement">To make everyday security habits ordinary at ISMT College — turning a once-a-year compliance exercise into short, regular practice that staff actually complete, so the college has real evidence of awareness, not just a signed register.</p>
+      <p class="mission-sign mono">— AquaTech Solutions, Team 07</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="platform">
+  <div class="section-head">
+    <p class="eyebrow-lbl">Platform</p>
+    <h2>One system, three jobs</h2>
+    <p>Aqua is not a once-a-year training day. It is a small piece of the working week, measured continuously.</p>
+  </div>
+  <div class="cap-layout">
+    <div class="cap-main cap">
+      <svg class="cap-glyph" viewBox="0 0 30 30" fill="none"><rect x="6" y="12" width="18" height="13" rx="2" stroke="#1F3864" stroke-width="1.6"/><path d="M9 12V9a6 6 0 0 1 12 0v3" stroke="#1F3864" stroke-width="1.6"/><circle cx="15" cy="18" r="1.6" fill="#FFC000"/></svg>
+      <h3>Phishing simulation</h3>
+      <p>Scheduled, realistic test emails sent to staff inboxes in a sandboxed simulation. Anyone who clicks lands on a short, supportive explainer — not a scolding — and a two-question check that the lesson landed.</p>
+    </div>
+    <div class="cap-col">
+      <div class="cap-sub cap">
+        <svg class="cap-glyph" viewBox="0 0 30 30" fill="none"><path d="M7 23V13M15 23V7M23 23v-9" stroke="#1F3864" stroke-width="1.8" stroke-linecap="round"/><circle cx="7" cy="10" r="2" fill="#5B9BD5"/><circle cx="15" cy="4" r="2" fill="#5B9BD5"/><circle cx="23" cy="11" r="2" fill="#5B9BD5"/></svg>
+        <h3>Micro-learning</h3>
+        <p>Modules under five minutes, built for people checking training off between lessons or admin tasks — not a 40-minute course nobody finishes.</p>
+      </div>
+      <div class="cap-sub cap">
+        <svg class="cap-glyph" viewBox="0 0 30 30" fill="none"><rect x="5" y="5" width="20" height="20" rx="3" stroke="#1F3864" stroke-width="1.6"/><path d="M10 19v-5M15 19v-9M20 19v-3" stroke="#FFC000" stroke-width="2" stroke-linecap="round"/></svg>
+        <h3>Risk-score reporting</h3>
+        <p>One live number per department, exportable for accreditation and audit — a dashboard the college can show, not a spreadsheet someone has to rebuild each term.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="how">
+  <div class="section-head">
+    <p class="eyebrow-lbl">How it works</p>
+    <h2>From sign-up to a safer inbox</h2>
+    <p>Four steps, in order — this is the sequence every department follows when they come on board.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-num mono">01</div><h4>Onboard staff</h4><p>Import a department's staff list and set their training frequency.</p></div>
+    <div class="step"><div class="step-num mono">02</div><h4>Assign training</h4><p>Short modules are scheduled and sent out automatically.</p></div>
+    <div class="step"><div class="step-num mono">03</div><h4>Run a simulation</h4><p>A realistic phishing test goes out, safely sandboxed, with no real risk.</p></div>
+    <div class="step"><div class="step-num mono">04</div><h4>Track and report</h4><p>Results land on the dashboard, ready to export for compliance.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="fieldnote">
+    <p>"We needed a way to prove our staff receive regular security training without more spreadsheets. Aqua's dashboard gives us that at a glance."</p>
+    <cite>ADMINISTRATIVE OFFICE — ISMT COLLEGE, PILOT DEPARTMENT</cite>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="section-head">
+    <p class="eyebrow-lbl">What AquaTech Solutions delivers</p>
+    <h2>Beyond the platform</h2>
+    <p>Aqua is a product, but ISMT College is also a client — this is the service that comes with it.</p>
+  </div>
+  <div class="offer-list">
+    <div class="offer-row"><div class="offer-name">Platform licence</div><p>Full access to the training modules, phishing-simulation engine and reporting dashboard for all onboarded departments.</p></div>
+    <div class="offer-row"><div class="offer-name">Branded onboarding</div><p>Content and scenarios customised to ISMT College's own systems and language, not generic stock examples.</p></div>
+    <div class="offer-row"><div class="offer-name">Simulation calendar</div><p>An agreed termly schedule of phishing simulations, reviewed with the college before anything goes out.</p></div>
+    <div class="offer-row"><div class="offer-name">Compliance reporting</div><p>A quarterly export summarising organisation-wide awareness, ready for governance or accreditation review.</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="team">
+  <div class="section-head">
+    <p class="eyebrow-lbl">Team</p>
+    <h2>Built by AquaTech Solutions</h2>
+    <p>A four-person team developing Aqua as part of the CET257 Enterprise Project — Team 07.</p>
+  </div>
+  <div class="roster">
+    <div class="roster-head"><span>Name</span><span>Role</span><span>Focus</span></div>
+    <div class="roster-row"><span class="r-name">Krish Chaudhary</span><span class="r-role mono">PROJECT MANAGER</span><span class="r-focus">Client liaison, planning, delivery</span></div>
+    <div class="roster-row"><span class="r-name">Nishan Raj Shrestha</span><span class="r-role mono">DEPUTY PM / UX</span><span class="r-focus">User research, interface design</span></div>
+    <div class="roster-row"><span class="r-name">Aman Karki</span><span class="r-role mono">DEVELOPER</span><span class="r-focus">Prototype build</span></div>
+    <div class="roster-row"><span class="r-name">Surya Shrestha</span><span class="r-role mono">DATABASE DEV &amp; QA</span><span class="r-focus">Data design, testing</span></div>
+  </div>
+</section>
+
+<section class="wrap" id="contact">
+  <div class="contact-grid">
+    <div>
+      <p class="eyebrow-lbl">Get in touch</p>
+      <h2 class="serif" style="font-size:28px;font-weight:500;color:var(--navy-ink);margin:0 0 14px;">Arrange a walkthrough for your department</h2>
+      <p style="color:var(--muted);font-size:14.5px;max-width:42ch;margin:0;">Tell us a little about your team and we'll come back to you within one working day with a time that suits.</p>
+    </div>
+    <form id="contact-form" onsubmit="return sendMail(event)">
+      <label for="f-name">Your name</label>
+      <input id="f-name" type="text" required>
+      <label for="f-email">Work email</label>
+      <input id="f-email" type="email" required>
+      <label for="f-org">Department or organisation</label>
+      <input id="f-org" type="text" value="ISMT College">
+      <label for="f-msg">What would you like covered?</label>
+      <textarea id="f-msg" rows="4"></textarea>
+      <button type="submit" class="btn-solid" style="width:100%;border:none;cursor:pointer;">Send message</button>
+      <p class="contact-note">This is a promotional prototype built for the CET257 Enterprise Project — no message is sent to a live inbox.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <span>© 2026 AquaTech Solutions — Aqua Cyber Security Awareness Platform</span>
+    <span>Built for the CET257 Enterprise Project, Team 07</span>
+  </div>
+</footer>
+
+<script>
+function sendMail(e){
+  e.preventDefault();
+  const name=document.getElementById('f-name').value;
+  const email=document.getElementById('f-email').value;
+  const org=document.getElementById('f-org').value;
+  const message=document.getElementById('f-msg').value;
+  const subject=encodeURIComponent('Aqua walkthrough request from '+(name||'a visitor'));
+  const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nDepartment: '+org+'\n\n'+message);
+  window.location.href='mailto:hello@aquatechsolutions.example?subject='+subject+'&body='+body;
+  return false;
+}
+</script>
+
+</body>
+</html>
